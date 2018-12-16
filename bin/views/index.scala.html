@@ -1,23 +1,13 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(one: String, two: String, three: String)
+@(msg: String, form1:Form[HomeController.SampleForm])
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
+@main("Sample Page") {
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    <h1>サンプル</h1>
-    <p>@one</p>
-    <p>@two</p>
-    <p>@three</p>
-
+    <h1>Hello!</h1>
+    <p>@msg</p>
+    @helper.form(action = routes.HomeController.send){
+    @(helper.inputText(
+    	field = form1("message")
+    ))
+    <input type="submit">
+    }
 }
